@@ -1,2 +1,22 @@
-# Array-13-ds
-Array 13 ds
+
+class Solution:
+    def findFloor(self, arr, x):
+        low = 0
+        high = len(arr) - 1
+        res = -1
+        
+        while low <= high:
+            mid = low + (high - low) // 2
+            
+            if arr[mid] <= x:
+                # This could be the floor, but let's look right
+                # for a potentially larger value or last occurrence
+                res = mid
+                low = mid + 1
+            else:
+                # Value is too large, search the left half
+                high = mid - 1
+                
+        return res
+        
+        
